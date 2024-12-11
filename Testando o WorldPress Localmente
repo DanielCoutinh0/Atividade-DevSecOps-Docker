@@ -6,6 +6,7 @@ sudo apt update && sudo apt install docker docker-compose -y
 
 2.
 Criar um arquivo .yml no Visual Studio Code contendo o seguinte conteudo: 
+
 services:
   wordpress:
     image: wordpress:latest
@@ -32,3 +33,18 @@ services:
 volumes:
   wordpress_data:
   db_data:
+
+3.
+subir o container, no terminal ir ate o diretorio onde esta o arquivo .yml e executar o comando:
+docker-compose up -d
+
+4.
+Abrir o navegador e navegar ate: 
+http://localhost:8080
+
+Fontes:
+https://www.youtube.com/watch?v=7-J_jWUkGBo
+https://www.youtube.com/watch?v=fpMud491U2I
+https://www.hostinger.com.br/tutoriais/como-instalar-wordpress-no-docker-windows-macos-e-linux
+
+
