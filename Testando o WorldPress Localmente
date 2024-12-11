@@ -1,1 +1,34 @@
+1.
+Baixar e instalar o Docker na máquina 
+https://www.docker.com/ (Windows/Mac)
+No Linux:
+sudo apt update && sudo apt install docker docker-compose -y
 
+2.
+Criar um arquivo .yml no Visual Studio Code contendo o seguinte conteudo: 
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: example
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+
+  db:
+    image: mysql:5.7
+    container_name: wordpress_db
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  wordpress_data:
+  db_data:
