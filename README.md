@@ -70,7 +70,7 @@ Trabalho para fixar conhecimentos de DOCKER
   |    HTTP      |   TCP    |     80     | Grupo de Segurança da EC2   |
 
   <h2>3º PASSO</h2>
-  criar RDS (Banco de Dados), EFS (Elastic File System), LB (Load Balancer), EC2 (Instancia)
+  criar RDS (Banco de Dados), EFS (Elastic File System), LB (Load Balancer), Duas EC2 (Instancia)
   
   <h4>Configurações na criação da RDS</h4>
 
@@ -152,6 +152,10 @@ Trabalho para fixar conhecimentos de DOCKER
   Usuario = ec2-user
   
   Senha = Par de chaves escolhidas na criação da ec2
+
+  <h2>Referências</h2>
+
+  https://www.youtube.com/watch?v=9vI108Tnpzg #Bastion Host
 
 
 
