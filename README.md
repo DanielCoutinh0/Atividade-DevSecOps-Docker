@@ -144,7 +144,15 @@ Trabalho para fixar conhecimentos de DOCKER
   
   User-Data Script:
   
- 
+   ![code](https://github.com/user-attachments/assets/03783522-48be-486a-9de9-c8f8590b7130)
+
+  <h2>4º PASSO</h2>
+  Acessar a EC2 via SSH (puTTY), usando Bastion Host
+  
+  Usuario = ec2-user
+  
+  Senha = Par de chaves escolhidas na criação da ec2
+
 
 
   
