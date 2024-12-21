@@ -39,20 +39,12 @@ services:
     ports:
       - "80:80"
     environment:
-      WORDPRESS_DB_HOST: ":3306" # Endereço do RDS
+      WORDPRESS_DB_HOST: "" # Endereço do RDS
       WORDPRESS_DB_USER: "" # Usuário do banco de dados
       WORDPRESS_DB_PASSWORD: "" # Senha do banco de dados
-      WORDPRESS_DB_NAME: "" # Nome do banco de dados no RDS
+      WORDPRESS_DB_NAME: "wordpress" # Nome do banco de dados no RDS
     volumes:
       - /efs/wordpress:/var/www/html
-
-volumes:
-  wordpress_data:
-    driver: local
-    driver_opts:
-      type: "nfs"
-      o: "addr=(),rw,nfsvers=4.1"  # Colocar DNS do EFS no lugar dos parenteses
-      device: ":/wordpress"
 
 EOF
 
@@ -60,6 +52,4 @@ cd /home/ec2-user
 
 # Executa o arquivo docker-compose.yml
 sudo docker compose up -d
-
-# Instala o Serviço mysql
-sudo yum install -y mysql
+sudo yum install -y MySQL
