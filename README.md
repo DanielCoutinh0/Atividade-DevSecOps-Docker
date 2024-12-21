@@ -33,6 +33,9 @@ Trabalho para fixar conhecimentos de DOCKER
   <h2>2º PASSO</h2>
   Criar 4 grupos de seguranças (EC2/RDS/LB/EFS)
 
+  ![Screenshot 2024-12-20 225942](https://github.com/user-attachments/assets/fd6459d1-11e7-4c6a-9a80-8b5cff8c62d7)
+
+
   ### Para o EC2:
 - Entrada 
   | Tipo         | Protocolo|  Porta     |      Tipo de Origem         |
@@ -86,7 +89,7 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * Gerenciamento de credenciais = Autogerenciada
   
-  * Configuração adicional: nome do banco de dados inicial = wordpress
+  * Configuração adicional = nome do banco de dados inicial = wordpress
   
   * Anotar a senha, usuario, endpoint
  
@@ -100,23 +103,16 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * Copiar nome do DNS
  
+  ![Screenshot 2024-12-20 203225](https://github.com/user-attachments/assets/7ec1a583-da1f-46e2-a0b1-da504a4e50a2)
+
+  ![Screenshot 2024-12-20 225754](https://github.com/user-attachments/assets/4007b80d-927d-4ab6-975f-f44a9abfdc42)
+
+
   <h4>Configurações na criação da LOAD BALANCER</h4>
-
-  1- Criar um grupo de destino:
   
-     * Tipo: instancias
-     
-     *  HTTP 80
-     
-     *  IPv4
-     
-     *  VPC criado antes
-     
-     *  Caminho: /wp-login.php ou /wp-admin/index.php ou /wp-admin/install.php
-
-  2 - criar LB
+   2 - criar LB
   
-    * Tipo: Classic Load Balancer
+    * Tipo = Classic Load Balancer
   
     * Voltado para a Internet
   
@@ -124,11 +120,15 @@ Trabalho para fixar conhecimentos de DOCKER
   
     * VPC criado antes, sub-redes publicas
     
-    * grupo de segurança: load balancer criado antes
+    * grupo de segurança = load balancer criado antes
   
-    * Listeners: HTTP 80 grupo criado antes
+    * Listeners = HTTP 80 grupo criado antes
  
-  <h4>Configurações na criação da EC2</h4>
+    * Verificações de integridade = /wp-admin/install.php ou /wp-login.php ou /wp-admin/index.php
+ 
+    * Instâncias = ec2 criadas
+ 
+  <h4>Configurações na criação do modelo de execução (ec2)</h4>
 
   * Imagem = Amazon Linux 2
   
@@ -136,26 +136,62 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * VPC = criada anteriormente
   
-  * Sub-Rede = Privada criada anteriormente
-  
-  * Atribuir IP público automaticamente = Sim
+  * Sub-Rede = Privadas criada anteriormente
   
   * grupo de segurança = grupo EC2 criado anteriormente
   
   User-Data Script:
   
-   ![code](https://github.com/user-attachments/assets/03783522-48be-486a-9de9-c8f8590b7130)
+   ![code](https://github.com/user-attachments/assets/d7bfd7ef-45aa-4f50-aac6-11d4a48093b4)
+
 
   <h2>4º PASSO</h2>
+  Criar grupo de Auto Scaling
+  
+  * Modelo de execução = criado antes
+  
+  * Versão = latest
+  
+  * Rede = vpc
+  
+  * Zonas = apenas privadas
+  
+  * Balanceamento de carga = load balancer classic criado antes
+  
+  * Verificações de integridade = verificações de integridade do Elastic Load Balancing
+  
+  * Capacidade desejada = 2
+  
+  * Capacidade mínima desejada = 2
+  
+  * Capacidade máxima desejada = 2
+
+
+  <h2>5º PASSO (OPCIONAL)</h2>
+  
   Acessar a EC2 via SSH (puTTY), usando Bastion Host
   
   Usuario = ec2-user
   
   Senha = Par de chaves escolhidas na criação da ec2
 
+  <h2>Dicas</h2>
+
+  1 - Como Acessar a pagina wordpress
+
+  * Pegue o DNS do LOAD BALANCER
+
+  * Na Web Use " http://(DNS do LB) "
+ 
   <h2>Referências</h2>
 
+  https://docs.aws.amazon.com/?nc2=h_ql_doc_do #Documentação Oficial AWS
+
   https://www.youtube.com/watch?v=9vI108Tnpzg #Bastion Host
+
+  https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/create-vpc.html #Criar VPC
+
+  
 
 
 
