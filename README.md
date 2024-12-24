@@ -20,6 +20,24 @@ Trabalho para fixar conhecimentos de DOCKER
 
 <img src="https://img.icons8.com/?size=100&id=63777&format=png&color=000000" alt="GITHUB" title="GITHUB" width="20" height="20"/> Github
 
+<h1> Sobre o Projeto </h1>
+
+<h3>Proposta:</h3>
+
+Criar uma infraestrutura escalável, resiliente e de alta disponibilidade para hospedar o WordPress utilizando os serviços da AWS. 
+
+<h3>Objetivos</h3>
+
+Alta Disponibilidade
+
+Escalabilidade Automática
+
+Desempenho e Experiência do Usuário
+
+Resiliência e Recuperação de Falhas
+
+Redução de Custos
+
 
   <h2>1º PASSO - VPC</h2>
   Criar VPC e suas Sub-Redes (2 Publicas e 2 Privadas)
