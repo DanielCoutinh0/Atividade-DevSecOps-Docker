@@ -205,14 +205,14 @@ Trabalho para fixar conhecimentos de DOCKER
 
   <h2>Pontos Importante</h2>
 
-  <h5>1 - Como Acessar a pagina wordpress</h5>
+  <h4>1 - Como Acessar a pagina wordpress</h4>
 
   * Pegue o DNS do LOAD BALANCER
 
   * Na Web Use " http://(DNS do LB) "
   <br>
   
-  <h5>2 - Ao reiniciar as maquinas EC2 o Wordpress vai parar ? Não! Motivo:</h5>
+  <h4>2 - Ao reiniciar as maquinas EC2 o Wordpress vai parar ? Não! Motivo:</h4>
 
   o docker está configurado para iniciar automaticamente com o sistema através do comando :
   
