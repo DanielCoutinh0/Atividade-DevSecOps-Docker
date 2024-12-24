@@ -129,7 +129,7 @@ Trabalho para fixar conhecimentos de DOCKER
  
     * Verificações de integridade = /wp-admin/install.php ou /wp-login.php ou /wp-admin/index.php
  
-    * Instâncias = associar a ec2 apois a criação
+    * Instâncias = não precisa
  
     <h2>6º PASSO - EC2</h2>
     Criar Duas EC2 (Instancia)
