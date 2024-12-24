@@ -38,6 +38,7 @@ Resiliência e Recuperação de Falhas
 
 Redução de Custos
 
+<br>
 
   <h2>1º PASSO - VPC</h2>
   Criar VPC e suas Sub-Redes (2 Publicas e 2 Privadas)
