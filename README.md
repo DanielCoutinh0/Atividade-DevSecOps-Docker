@@ -87,8 +87,6 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * Grupo de segurança de VPC = apenas o grupo RDS criado anteriormente
   
-  * Gerenciamento de credenciais = Autogerenciada
-  
   * Configuração adicional = nome do banco de dados inicial = wordpress
   
   * Anotar a senha, usuario, endpoint
