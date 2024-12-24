@@ -30,6 +30,8 @@ Trabalho para fixar conhecimentos de DOCKER
   
   ![image](https://github.com/user-attachments/assets/bf67d6bc-4f6c-474c-a717-cfd2168b2d71)
 
+  <br>
+
   <h2>2º PASSO - Grupos de Segurança</h2>
   Criar 4 grupos de seguranças (EC2/RDS/LB/EFS)
 
@@ -72,6 +74,8 @@ Trabalho para fixar conhecimentos de DOCKER
   | Todo tráfego |   TCP    |   Tudo     |         0.0.0.0/0           |
   |    HTTP      |   TCP    |     80     | Grupo de Segurança da EC2   |
 
+  <br>
+  
   <h2>3º PASSO - RDS</h2>
   Criar RDS (Banco de Dados)
   
@@ -91,6 +95,10 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * Anotar a senha, usuario, endpoint
  
+  ![Screenshot 2024-12-23 235035](https://github.com/user-attachments/assets/ccb27ddf-5b7f-4271-af5e-6f5b9f1c8a74)
+
+  <br>
+ 
   <h2>4º PASSO - EFS</h2>
   Criar EFS (Elastic File System)
  
@@ -106,8 +114,8 @@ Trabalho para fixar conhecimentos de DOCKER
  
   ![Screenshot 2024-12-20 203225](https://github.com/user-attachments/assets/7ec1a583-da1f-46e2-a0b1-da504a4e50a2)
 
-  ![Screenshot 2024-12-20 225754](https://github.com/user-attachments/assets/4007b80d-927d-4ab6-975f-f44a9abfdc42)
-
+  <br>
+  
   <h2>5º PASSO - LOAD BALANCER</h2>
   Criar LB (Load Balancer)
 
@@ -131,7 +139,12 @@ Trabalho para fixar conhecimentos de DOCKER
  
     * Instâncias = não precisa
  
+    ![OIP](https://github.com/user-attachments/assets/4dda7aa7-7045-46be-81d6-f2c1be15d036)
+
+  <br>
+ 
     <h2>6º PASSO - EC2</h2>
+    
     Criar Duas EC2 (Instancia)
  
   <h4>Configurações na criação do modelo de execução (ec2)</h4>
@@ -150,6 +163,7 @@ Trabalho para fixar conhecimentos de DOCKER
   
    ![code](https://github.com/user-attachments/assets/d7bfd7ef-45aa-4f50-aac6-11d4a48093b4)
 
+    <br>
 
   <h2>7º PASSO - Auto Scaling</h2>
   Criar grupo de Auto Scaling
@@ -171,7 +185,10 @@ Trabalho para fixar conhecimentos de DOCKER
   * Capacidade mínima desejada = 2
   
   * Capacidade máxima desejada = 2
+ 
+  ![OIP](https://github.com/user-attachments/assets/a3ca46ef-d229-4949-af1f-fece3a861df8)
 
+    <br>
 
   <h2>8º PASSO (OPCIONAL)</h2>
   
@@ -181,13 +198,38 @@ Trabalho para fixar conhecimentos de DOCKER
   
   Senha = Par de chaves escolhidas na criação da ec2
 
-  <h2>Dicas</h2>
+  ![NM-diagram-061316-a](https://github.com/user-attachments/assets/5f23bd73-322c-48bf-a89d-5cf8d2e56cc4)
 
-  1 - Como Acessar a pagina wordpress
+
+  <br>
+
+  <h2>Pontos Importante</h2>
+
+  <h5>1 - Como Acessar a pagina wordpress</h5>
 
   * Pegue o DNS do LOAD BALANCER
 
   * Na Web Use " http://(DNS do LB) "
+  <br>
+  
+  <h5>2 - Ao reiniciar as maquinas EC2 o Wordpress vai parar ? Não! Motivo:</h5>
+
+  o docker está configurado para iniciar automaticamente com o sistema através do comando :
+  
+    ```
+
+      sudo systemctl enable docker
+
+    ```
+
+    O comando restart garante que o container do Wordpress seja reiniciado automaticamente quando o Docker iniciar
+
+  ````
+  restart: always
+  ````
+
+  <br>
+  <br>
  
   <h2>Referências</h2>
 
