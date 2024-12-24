@@ -125,11 +125,11 @@ Trabalho para fixar conhecimentos de DOCKER
     
     * grupo de segurança = load balancer criado antes
   
-    * Listeners = HTTP 80 grupo criado antes
+    * Listeners = HTTP 80
  
     * Verificações de integridade = /wp-admin/install.php ou /wp-login.php ou /wp-admin/index.php
  
-    * Instâncias = ec2 criadas
+    * Instâncias = associar a ec2 apois a criação
  
     <h2>6º PASSO - EC2</h2>
     Criar Duas EC2 (Instancia)
