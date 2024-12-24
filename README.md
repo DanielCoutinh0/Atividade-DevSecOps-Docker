@@ -229,16 +229,30 @@ Redução de Custos
   * Pegue o DNS do LOAD BALANCER
 
   * Na Web Use " http://(DNS do LB) "
+    
+  <br>
+
+  <h4>2 - Como visualizar as mensagens geradas pelo script</h4>
+
+  conecte-se a instância EC2 usando Bastion Host
+
+  use o seguinte comando:
+
+  ```
+  sudo cat /var/log/user-data.log
+    ```
+  
+  Isso exibirá todo o conteúdo do arquivo no terminal.
+
+
   <br>
   
-  <h4>2 - Ao reiniciar as maquinas EC2 o Wordpress vai parar ? Não! Motivo:</h4>
+  <h4>3 - Ao reiniciar as maquinas EC2 o Wordpress vai parar ? Não! Motivo:</h4>
 
   o docker está configurado para iniciar automaticamente com o sistema através do comando :
   
     ```
-
       sudo systemctl enable docker
-
     ```
 
     O comando restart garante que o container do Wordpress seja reiniciado automaticamente quando o Docker iniciar
@@ -248,7 +262,7 @@ Redução de Custos
   ````
   <br>
 
-  <h4>3 - Aumento repentino no tráfego do WordPress</h4>
+  <h4>4 - Aumento repentino no tráfego do WordPress</h4>
 
   Algumas implementações feitas ajudam a manter o sistema funcionando mesmo com o aumento de tráfego, Ex:
 
@@ -260,7 +274,7 @@ Redução de Custos
 
   <br>
 
-  <h4>4 - Quais medidas para garantir que o WordPress está seguro contra ataques?</h4>
+  <h4>5 - Quais medidas para garantir que o WordPress está seguro contra ataques?</h4>
 
   Security Groups, Regras de firewall com Security Groups na AWS para permitir apenas conexões necessárias.
 
@@ -270,7 +284,7 @@ Redução de Custos
 
   <br>
 
-  <h4>5 - Como proceder se o banco de dados RDS for removido acidentalmente?</h4>
+  <h4>6 - Como proceder se o banco de dados RDS for removido acidentalmente?</h4>
 
   Backup Automático, restaurar o banco de dados para um estado anterior.
 
