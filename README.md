@@ -180,7 +180,7 @@ Redução de Custos
   
   User-Data Script:
   
-   ![code](https://github.com/user-attachments/assets/d7bfd7ef-45aa-4f50-aac6-11d4a48093b4)
+   ![code](https://github.com/user-attachments/assets/27be2b5d-e9dc-4542-a631-9703085e656b)
 
     <br>
 
