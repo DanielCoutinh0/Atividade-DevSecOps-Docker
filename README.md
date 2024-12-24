@@ -4,24 +4,24 @@ Trabalho para fixar conhecimentos de DOCKER
 
 <h1 align="center"> Requisitos </h1>
 
-* Conta AWS
+<img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" alt="AWS" title="AWS" width="20" height="20"/> Conta AWS
 
-* Docker ou Containerd
+<img src="https://img.icons8.com/?size=100&id=22813&format=png&color=000000" alt="DOCKER" title="DOCKER" width="20" height="20"/> Docker ou Containerd
 
-* Script de Start Instance (user_data.sh)
+<img src="https://img.icons8.com/?size=100&id=19679&format=png&color=000000" alt="SCRIPT" title="SCRIPT" width="20" height="20"/> Script de Start Instance (user_data.sh)
 
-* Wordpress
+<img src="https://img.icons8.com/?size=100&id=13664&format=png&color=000000" alt="WORDPRESS" title="WORDPRESS" width="20" height="20"/> Wordpress
 
-* RDS MySQL
+<img src="https://img.icons8.com/?size=100&id=59927&format=png&color=000000" alt="MYSQL" title="MYSQL" width="20" height="20"/> RDS MySQL
 
-* EFS AWS
+<img src="https://img.icons8.com/?size=100&id=Xnh9f6O879pb&format=png&color=000000" alt="EFS" title="EFS" width="20" height="20"/> EFS AWS
 
-* Load Balancer AWS (Classic)
+<img src="https://img.icons8.com/?size=100&id=59368&format=png&color=000000" alt="LOADBALANCER" title="LOADBALANCER" width="20" height="20"/> Load Balancer AWS (Classic)
 
-* Git
+<img src="https://img.icons8.com/?size=100&id=63777&format=png&color=000000" alt="GITHUB" title="GITHUB" width="20" height="20"/> Github
 
 
-  <h2>1º PASSO</h2>
+  <h2>1º PASSO - VPC</h2>
   Criar VPC e suas Sub-Redes (2 Publicas e 2 Privadas)
   
   Instalar as sub-redes em Gateways
@@ -30,7 +30,7 @@ Trabalho para fixar conhecimentos de DOCKER
   
   ![image](https://github.com/user-attachments/assets/bf67d6bc-4f6c-474c-a717-cfd2168b2d71)
 
-  <h2>2º PASSO</h2>
+  <h2>2º PASSO - Grupos de Segurança</h2>
   Criar 4 grupos de seguranças (EC2/RDS/LB/EFS)
 
   ![Screenshot 2024-12-20 225942](https://github.com/user-attachments/assets/fd6459d1-11e7-4c6a-9a80-8b5cff8c62d7)
@@ -40,7 +40,7 @@ Trabalho para fixar conhecimentos de DOCKER
 - Entrada 
   | Tipo         | Protocolo|  Porta     |      Tipo de Origem         |
   |--------------|----------|------------|-----------------------------|
-  |     HTTP     |    TCP   |    80      |    G.S do Load Balancer     |
+  |     HTTP     |    TCP   |    80      |    Grupo de Segurança do Load Balancer     |
   |     SSH      |    TCP   |    22      |            IP               |
 - Saída
   | Tipo          | Protocolo|  Porta     |      Tipo de Origem         |
@@ -72,8 +72,8 @@ Trabalho para fixar conhecimentos de DOCKER
   | Todo tráfego |   TCP    |   Tudo     |         0.0.0.0/0           |
   |    HTTP      |   TCP    |     80     | Grupo de Segurança da EC2   |
 
-  <h2>3º PASSO</h2>
-  criar RDS (Banco de Dados), EFS (Elastic File System), LB (Load Balancer), Duas EC2 (Instancia)
+  <h2>3º PASSO - RDS</h2>
+  Criar RDS (Banco de Dados)
   
   <h4>Configurações na criação da RDS</h4>
 
@@ -93,6 +93,9 @@ Trabalho para fixar conhecimentos de DOCKER
   
   * Anotar a senha, usuario, endpoint
  
+  <h2>4º PASSO - EFS</h2>
+  Criar EFS (Elastic File System)
+ 
   <h4>Configurações na criação da EFS</h4>
   
   * colocar vpc criada anteriorente
@@ -107,6 +110,8 @@ Trabalho para fixar conhecimentos de DOCKER
 
   ![Screenshot 2024-12-20 225754](https://github.com/user-attachments/assets/4007b80d-927d-4ab6-975f-f44a9abfdc42)
 
+  <h2>5º PASSO - LOAD BALANCER</h2>
+  Criar LB (Load Balancer)
 
   <h4>Configurações na criação da LOAD BALANCER</h4>
   
@@ -128,6 +133,9 @@ Trabalho para fixar conhecimentos de DOCKER
  
     * Instâncias = ec2 criadas
  
+    <h2>6º PASSO - EC2</h2>
+    Criar Duas EC2 (Instancia)
+ 
   <h4>Configurações na criação do modelo de execução (ec2)</h4>
 
   * Imagem = Amazon Linux 2
@@ -145,7 +153,7 @@ Trabalho para fixar conhecimentos de DOCKER
    ![code](https://github.com/user-attachments/assets/d7bfd7ef-45aa-4f50-aac6-11d4a48093b4)
 
 
-  <h2>4º PASSO</h2>
+  <h2>7º PASSO - Auto Scaling</h2>
   Criar grupo de Auto Scaling
   
   * Modelo de execução = criado antes
@@ -167,7 +175,7 @@ Trabalho para fixar conhecimentos de DOCKER
   * Capacidade máxima desejada = 2
 
 
-  <h2>5º PASSO (OPCIONAL)</h2>
+  <h2>8º PASSO (OPCIONAL)</h2>
   
   Acessar a EC2 via SSH (puTTY), usando Bastion Host
   
