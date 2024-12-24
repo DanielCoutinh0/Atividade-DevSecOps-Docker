@@ -40,7 +40,7 @@ Redução de Custos
 
 <br>
 
-  <h2>1º PASSO - VPC</h2>
+  <h2>1º PASSO - VPC 🛜</h2>
   Criar VPC e suas Sub-Redes (2 Publicas e 2 Privadas)
   
   Instalar as sub-redes em Gateways
@@ -51,7 +51,7 @@ Redução de Custos
 
   <br>
 
-  <h2>2º PASSO - Grupos de Segurança</h2>
+  <h2>2º PASSO - Grupos de Segurança 🔐</h2>
   Criar 4 grupos de seguranças (EC2/RDS/LB/EFS)
 
   ![Screenshot 2024-12-20 225942](https://github.com/user-attachments/assets/fd6459d1-11e7-4c6a-9a80-8b5cff8c62d7)
@@ -95,7 +95,7 @@ Redução de Custos
 
   <br>
   
-  <h2>3º PASSO - RDS</h2>
+  <h2>3º PASSO - RDS 🎲</h2>
   Criar RDS (Banco de Dados)
   
   <h4>Configurações na criação da RDS</h4>
@@ -118,7 +118,7 @@ Redução de Custos
 
   <br>
  
-  <h2>4º PASSO - EFS</h2>
+  <h2>4º PASSO - EFS 📂</h2>
   Criar EFS (Elastic File System)
  
   <h4>Configurações na criação da EFS</h4>
@@ -135,7 +135,7 @@ Redução de Custos
 
   <br>
   
-  <h2>5º PASSO - LOAD BALANCER</h2>
+  <h2>5º PASSO - LOAD BALANCER ⚖️</h2>
   Criar LB (Load Balancer)
 
   <h4>Configurações na criação da LOAD BALANCER</h4>
@@ -162,7 +162,7 @@ Redução de Custos
 
   <br>
  
-    <h2>6º PASSO - EC2</h2>
+    <h2>6º PASSO - EC2 ☁️</h2>
     
     Criar Duas EC2 (Instancia)
  
@@ -184,7 +184,7 @@ Redução de Custos
 
     <br>
 
-  <h2>7º PASSO - Auto Scaling</h2>
+  <h2>7º PASSO - Auto Scaling 📈​</h2>
   Criar grupo de Auto Scaling
   
   * Modelo de execução = criado antes
@@ -209,7 +209,7 @@ Redução de Custos
 
     <br>
 
-  <h2>8º PASSO (OPCIONAL)</h2>
+  <h2>8º PASSO (OPCIONAL) 🔛​</h2>
   
   Acessar a EC2 via SSH (puTTY), usando Bastion Host
   
@@ -222,7 +222,7 @@ Redução de Custos
 
   <br>
 
-  <h2>Pontos Importante</h2>
+  <h2>Pontos Importante ⚠️</h2>
 
   <h4>1 - Como Acessar a pagina wordpress</h4>
 
@@ -294,7 +294,7 @@ Redução de Custos
   <br>
   <br>
  
-  <h2>Referências</h2>
+  <h2>Referências 🔗</h2>
 
   https://docs.aws.amazon.com/?nc2=h_ql_doc_do #Documentação Oficial AWS
 
