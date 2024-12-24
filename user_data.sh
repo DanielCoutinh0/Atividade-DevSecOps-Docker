@@ -1,34 +1,37 @@
 #!/bin/bash
 
-# Atualiza o sistema
+EFS_DNS="<DNS do EFS>"          # Substitua pelo DNS do EFS
+DB_HOST="<Endereço do RDS>"     # Substitua pelo EndPoint do RDS
+DB_USER="<Usuário do banco>"    # Substitua pelo usuário do banco
+DB_PASSWORD="<Senha do banco>"  # Substitua pela senha do banco
+DB_NAME="<Nome do banco>"       # Substitua pelo nome do banco
+
 sudo yum update -y
 
-# Instala o docker
+echo "Iniciando atualização do sistema..." >> /var/log/user-data.log
+
 sudo yum install docker -y
 
-# Cria o diretório para o download do Docker compose
+echo "Instalando Docker..." >> /var/log/user-data.log
+
 sudo mkdir -p /usr/local/lib/docker/cli-plugins
 
-# Download do Docker Compose
 sudo curl -L https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
 
-# Altera a permissão do docker-compose 
 sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
-# Inicia o Docker
 sudo systemctl start docker
 
-# Configura para o Docker ser iniciado junto com o sistema
 sudo systemctl enable docker
 
-# Cria o diretório efs 
+echo "Iniciando e habilitando o serviço Docker..." >> /var/log/user-data.log
+
 sudo mkdir -p /efs
 
-#  Monta um sistema de arquivos da Amazon Elastic File System (EFS) no Linux
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ():/ /efs # Colocar DNS do EFS no lugar dos ultimos parenteses
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport <"DNS do EFS">:/ /efs # tirar os <> ao por dns do efs
 
-# Cria e edita o arquivo docker-compose.yml
-# Alterar as configurações sobre o DB e o EFS conforme como foi criado na AWS
+echo "Montando o EFS em /efs..." >> /var/log/user-data.log
+
 cat <<EOF > /home/ec2-user/docker-compose.yml
 
 services:
@@ -39,17 +42,28 @@ services:
     ports:
       - "80:80"
     environment:
-      WORDPRESS_DB_HOST: "" # Endereço do RDS
-      WORDPRESS_DB_USER: "" # Usuário do banco de dados
-      WORDPRESS_DB_PASSWORD: "" # Senha do banco de dados
-      WORDPRESS_DB_NAME: "wordpress" # Nome do banco de dados no RDS
+      WORDPRESS_DB_HOST: "${DB_HOST}"
+      WORDPRESS_DB_USER: "${DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
+      WORDPRESS_DB_NAME: "${DB_NAME}"
     volumes:
       - /efs/wordpress:/var/www/html
 
 EOF
 
+echo "Criando arquivo docker-compose.yml..." >> /var/log/user-data.log
+
 cd /home/ec2-user
 
-# Executa o arquivo docker-compose.yml
 sudo docker compose up -d
-sudo yum install -y MySQL
+
+echo "Iniciando contêiner WordPress com Docker Compose..." >> /var/log/user-data.log
+
+if mountpoint -q /efs; then
+  echo "EFS montado com sucesso em /efs." >> /var/log/user-data.log
+else
+  echo "Erro ao montar o EFS. Verifique o DNS configurado." >> /var/log/user-data.log
+  exit 1
+fi
+
+echo "Script concluído com sucesso!" >> /var/log/user-data.log
