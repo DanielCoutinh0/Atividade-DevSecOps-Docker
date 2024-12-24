@@ -246,7 +246,37 @@ Redução de Custos
   ````
   restart: always
   ````
+  <br>
 
+  <h4>3 - Aumento repentino no tráfego do WordPress</h4>
+
+  Algumas implementações feitas ajudam a manter o sistema funcionando mesmo com o aumento de tráfego, Ex:
+
+  Auto Scaling Group (ASG), o Auto Scaling adiciona ou remove instâncias automaticamente com base na carga do sistema
+
+  Load Balancer, evita que uma única instância fique sobrecarregada.
+
+  CloudWatch, monitorar métricas como uso de CPU, memória e tráfego de rede nas instâncias EC2 e no Load Balancer.
+
+  <br>
+
+  <h4>4 - Quais medidas para garantir que o WordPress está seguro contra ataques?</h4>
+
+  Security Groups, Regras de firewall com Security Groups na AWS para permitir apenas conexões necessárias.
+
+  Backup Automático do RDS, recuperação em caso de incidentes.
+
+  CloudWatch, logs detalhados para monitorar a atividade do sistema e detectar acessos suspeitos.
+
+  <br>
+
+  <h4>5 - Como proceder se o banco de dados RDS for removido acidentalmente?</h4>
+
+  Backup Automático, restaurar o banco de dados para um estado anterior.
+
+  Snapshots Manuais, restaurá-lo a partir de um snapshot.
+
+  
   <br>
   <br>
  
