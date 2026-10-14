@@ -67,7 +67,7 @@ Redução de Custos
   | Tipo          | Protocolo|  Porta     |      Tipo de Origem         |
   |---------------|----------|------------|-----------------------------|
   | Todo tráfego  |   Todos  |   Tudo     |        0.0.0.0/0            |
-  | MySQL/Aurora  |   TCP    |   2206     |  Grupo de Segurança da RDS  |
+  | MySQL/Aurora  |   TCP    |   3306     |  Grupo de Segurança da RDS  |
   |    NFS        |   TCP    |   2049     |  Grupo de Segurança da EFS  |
 
   ### Para o RDS MySql:
